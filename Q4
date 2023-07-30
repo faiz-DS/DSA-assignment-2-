@@ -1,0 +1,21 @@
+def can_place_flowers(flowerbed, n):
+    count = 0
+    i = 0
+    while i < len(flowerbed):
+        if flowerbed[i] == 0:
+            # Check if the current plot is empty and the next plot is also empty or outside the flowerbed
+            next_plot = 0 if i == len(flowerbed) - 1 else flowerbed[i + 1]
+            prev_plot = 0 if i == 0 else flowerbed[i - 1]
+            if next_plot == 0 and prev_plot == 0:
+                count += 1
+                # Move to the plot after the current group of contiguous empty plots
+                i += 1
+        i += 1
+
+    return count >= n
+
+# Test example
+flowerbed = [1, 0, 0, 0, 1]
+n = 1
+print(can_place_flowers(flowerbed, n))  # Output: True
+

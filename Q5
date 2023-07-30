@@ -1,0 +1,15 @@
+def maximum_product(nums):
+    nums.sort()
+
+    # Case 1: Product of the three largest positive numbers
+    max_product1 = nums[-1] * nums[-2] * nums[-3]
+
+    # Case 2: Product of the two smallest negative numbers and the largest positive number
+    max_product2 = nums[0] * nums[1] * nums[-1]
+
+    # Return the maximum of the two cases
+    return max(max_product1, max_product2)
+
+# Test example
+nums = [1, 2, 3]
+print(maximum_product(nums))  # Output: 6
